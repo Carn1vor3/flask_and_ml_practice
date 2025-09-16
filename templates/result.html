@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Result</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-size: cover;
+      background-position: center;
+      {% if result == 'rock' %}
+      background-image: url("{{ url_for('static', filename='rock_bg.jpg') }}");
+      {% elif result == 'paper' %}
+      background-image: url("{{ url_for('static', filename='paper_bg.png') }}");
+      {% elif result == 'scissors' %}
+      background-image: url("{{ url_for('static', filename='scissors_bg.png') }}");
+      {% endif %}
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 30px 40px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    img {
+      max-width: 300px;
+      margin: 20px 0;
+      border-radius: 10px;
+      border: 2px solid #ddd;
+    }
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Result of classififcation</h1>
+    <p><strong>File:</strong> {{ filename }}</p>
+    <img src="{{ url_for('static', filename=filename) }}" alt="Uploaded Image">
+    <p><strong>Model decided:</strong> {{ result }}</p>
+    <a href="/">Try again</a>
+  </div>
+</body>
+</html>
